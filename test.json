@@ -1,0 +1,116 @@
+{
+    "data": [
+        {
+            "attachments": {
+                "media_keys": [
+                    "3_1400741883031130117"
+                ]
+            },
+            "author_id": "870961769711255553",
+            "context_annotations": [
+                {
+                    "domain": {
+                        "description": "Holidays like Christmas or Halloween",
+                        "id": "119",
+                        "name": "Holiday"
+                    },
+                    "entity": {
+                        "description": "This entity includes all conversations for Christmas for all years.",
+                        "id": "1250078501849280512",
+                        "name": "Christmas"
+                    }
+                },
+                {
+                    "domain": {
+                        "description": "Holidays like Christmas or Halloween",
+                        "id": "119",
+                        "name": "Holiday"
+                    },
+                    "entity": {
+                        "id": "1389626282690834438",
+                        "name": "Christmas Max Test"
+                    }
+                }
+            ],
+            "created_at": "2021-06-04T09:11:04.000Z",
+            "entities": {
+                "annotations": [
+                    {
+                        "end": 42,
+                        "normalized_text": "christmas",
+                        "probability": 0.8621,
+                        "start": 34,
+                        "type": "Other"
+                    }
+                ],
+                "hashtags": [
+                    {
+                        "end": 84,
+                        "start": 69,
+                        "tag": "quadraticlands"
+                    }
+                ],
+                "mentions": [
+                    {
+                        "end": 93,
+                        "start": 85,
+                        "username": "gitcoin"
+                    },
+                    {
+                        "end": 139,
+                        "start": 132,
+                        "username": "owocki"
+                    }
+                ],
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/SJB7wUD3Bx",
+                        "end": 166,
+                        "expanded_url": "https://twitter.com/sm_judge/status/1400740794407874562/photo/1",
+                        "start": 143,
+                        "url": "https://t.co/SJB7wUD3Bx"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/fna9Rsqhte",
+                        "end": 190,
+                        "expanded_url": "https://twitter.com/sm_judge/status/1400741886529179653/photo/1",
+                        "start": 167,
+                        "url": "https://t.co/fna9Rsqhte"
+                    },
+                    {
+                        "display_url": "twitter.com/sm_judge/statu\u2026",
+                        "end": 214,
+                        "expanded_url": "https://twitter.com/sm_judge/status/1400731947563831296",
+                        "start": 191,
+                        "url": "https://t.co/5Klt38mlvV"
+                    }
+                ]
+            },
+            "id": "1400741886529179653",
+            "lang": "en",
+            "possibly_sensitive": false,
+            "public_metrics": {
+                "like_count": 8,
+                "quote_count": 0,
+                "reply_count": 1,
+                "retweet_count": 0
+            },
+            "referenced_tweets": [
+                {
+                    "id": "1400731947563831296",
+                    "type": "quoted"
+                }
+            ],
+            "source": "Twitter for Android",
+            "text": "And the gifts don't stop... Is it christmas already!  \ud83c\udf85\n\nReceived my #quadraticlands @gitcoin schwag box.\n\nThank you for everything @owocki \ud83e\udd16\u2764 https://t.co/SJB7wUD3Bx https://t.co/fna9Rsqhte https://t.co/5Klt38mlvV"
+        }
+    ],
+    "includes": {
+        "media": [
+            {
+                "media_key": "3_1400741883031130117",
+                "type": "photo"
+            }
+        ]
+    }
+}

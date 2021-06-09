@@ -1,0 +1,44 @@
+{
+    "data": [
+        {
+            "created_at": "2013-12-14T04:35:55.000Z",
+            "description": "The voice of the #TwitterDev team and your official source for updates, news, and events, related to the #TwitterAPI.",
+            "entities": {
+                "description": {
+                    "hashtags": [
+                        {
+                            "end": 28,
+                            "start": 17,
+                            "tag": "TwitterDev"
+                        },
+                        {
+                            "end": 116,
+                            "start": 105,
+                            "tag": "TwitterAPI"
+                        }
+                    ]
+                },
+                "url": {
+                    "urls": [
+                        {
+                            "display_url": "developer.twitter.com/en/community",
+                            "end": 23,
+                            "expanded_url": "https://developer.twitter.com/en/community",
+                            "start": 0,
+                            "url": "https://t.co/3ZX3TNiZCY"
+                        }
+                    ]
+                }
+            },
+            "id": "2244994945",
+            "location": "127.0.0.1",
+            "name": "Twitter Dev",
+            "pinned_tweet_id": "1397568983931392004",
+            "profile_image_url": "https://pbs.twimg.com/profile_images/1397586613551599625/txx6AvoK_normal.jpg",
+            "protected": false,
+            "url": "https://t.co/3ZX3TNiZCY",
+            "username": "TwitterDev",
+            "verified": true
+        }
+    ]
+}

@@ -1,0 +1,48 @@
+{
+    "data": [
+        {
+            "author_id": "1086485080728428545",
+            "created_at": "2021-05-29T07:24:08.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "twitter.com/shuvam360/stat\u2026",
+                        "end": 34,
+                        "expanded_url": "https://twitter.com/shuvam360/status/1398489877486870531",
+                        "start": 11,
+                        "url": "https://t.co/byckCsXS1w"
+                    }
+                ]
+            },
+            "id": "1398540647003422726",
+            "lang": "en",
+            "non_public_metrics": {
+                "impression_count": 206,
+                "user_profile_clicks": 2
+            },
+            "organic_metrics": {
+                "impression_count": 206,
+                "like_count": 1,
+                "reply_count": 0,
+                "retweet_count": 0,
+                "user_profile_clicks": 2
+            },
+            "possibly_sensitive": false,
+            "public_metrics": {
+                "like_count": 1,
+                "quote_count": 0,
+                "reply_count": 0,
+                "retweet_count": 0
+            },
+            "referenced_tweets": [
+                {
+                    "id": "1398489877486870531",
+                    "type": "quoted"
+                }
+            ],
+            "source": "Twitter for Android",
+            "text": "Anyone ?!\ud83c\udf89 https://t.co/byckCsXS1w"
+        }
+    ]
+}
+
