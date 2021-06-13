@@ -10,11 +10,11 @@ class DeveloperKeyConfigurations():
     # export 'CONSUMER_SECRET'='<your_consumer_secret>'
     # export 'BEARERTOKEN'='<your_bearer_token>'
 
-    consumer_key = 'NULL'
-    consumer_secret = 'NULL'
-    bearer_token = 'NULL'
-    access_token = 'NULL'
-    access_secret = 'NULL'
+    consumer_key = 'ohMa5HYN1pXT7x3X2H67499B1'
+    consumer_secret = 'xqSfnEmZHn3YNnqo3Yk6ruzhOs9LpiOqtFjNKw7gJiC9mRT4Q0'
+    bearer_token = 'AAAAAAAAAAAAAAAAAAAAAF5GNAEAAAAALUoy1SaTDchx11r3GZ8Z0Qz9GQY%3DQFrQhXz14idxvfzZcuF8NBagW9sLy6b3mk9u6PIcjbUUC8Qzf2'
+    access_token = '1086485080728428545-IWLwqXMSDpzSjm7jpyti1NqbLgMbZq'
+    access_secret = 'uG7vhvOIUtZBEPkCnVavqOistTXljX4nIPblyxbdmvZHa'
     
     def __init__(self):
         pass
@@ -40,6 +40,7 @@ def OAuthentication_v1A():
 
     try:
         fetch_response = oauth.fetch_request_token(request_token_url)
+        print(fetch_response)
     except ValueError:
         print("There may have been an issue with the consumer_key or consumer_secret you entered.")
 
@@ -74,7 +75,7 @@ def tweetMetrics(tweetID):
     global TweetMetricsJSON
     # You can adjust ids to include a single Tweets
     # Or you can add to up to 100 comma-separated IDs
-    params = {"ids": tweetID, "tweet.fields": "id,author_id,created_at,text,attachments,lang,source,withheld,context_annotations,entities,geo,in_reply_to_user_id,possibly_sensitive,referenced_tweets,public_metrics", "expansions": "attachments.media_keys", "media.fields": "duration_ms,public_metrics"} # Add tweet.fields for non_public_metrics, organic_metrics, promoted_metrics
+    params = {"ids": tweetID, "tweet.fields": "id,author_id,created_at,text,attachments,lang,source,withheld,conversation_id,context_annotations,entities,geo,possibly_sensitive,public_metrics,organic_metrics,non_public_metrics", "expansions": "attachments.media_keys", "media.fields": "duration_ms,public_metrics"} # Add tweet.fields for non_public_metrics, organic_metrics, promoted_metrics
     # Tweet fields are adjustable.
     # Options include:
     # attachments, author_id, context_annotations,
@@ -186,7 +187,7 @@ def userFollowing(userID):
 
 
 
-# tweetMetrics('1397207890075832320')
+# tweetMetrics('1398540647003422726')
 # print(json.dumps(TweetMetricsJSON, indent=4, sort_keys=True))
 # print(TweetMetricsJSON['data'][0]['source'])
 # userMetrics(1234812920791388160)
