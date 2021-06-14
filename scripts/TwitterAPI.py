@@ -2,6 +2,8 @@ from requests_oauthlib import OAuth1Session
 import os
 import json
 import requests
+import time
+import datetime
 
 class DeveloperKeyConfigurations():
     # To set your enviornment variables in your terminal run the following line:
@@ -40,7 +42,7 @@ def OAuthentication_v1A():
 
     try:
         fetch_response = oauth.fetch_request_token(request_token_url)
-        print(fetch_response)
+        # print(fetch_response)
     except ValueError:
         print("There may have been an issue with the consumer_key or consumer_secret you entered.")
 
@@ -91,8 +93,10 @@ def tweetMetrics(tweetID):
     if response.status_code != 200:
         raise Exception("Request returned an error: {} {}".format(response.status_code, response.text))
 
-    print("Response code: {}".format(response.status_code))
+    # print("Response code: {}".format(response.status_code))
     TweetMetricsJSON = response.json()
+    
+    TweetMetricsJSON['data'][0]['created_at'] = time.mktime(datetime.datetime(int(str(TweetMetricsJSON['data'][0]['created_at'])[0:4]), int(str(TweetMetricsJSON['data'][0]['created_at'])[5:7]), int(str(TweetMetricsJSON['data'][0]['created_at'])[8:10]), int(str(TweetMetricsJSON['data'][0]['created_at'])[11:13]), int(str(TweetMetricsJSON['data'][0]['created_at'])[14:16])).timetuple())
     # json_response = response.json()
     # print(json.dumps(json_response, indent=4, sort_keys=True))
 
@@ -121,8 +125,10 @@ def userMetrics(userID):
     if response.status_code != 200:
         raise Exception("Request returned an error: {} {}".format(response.status_code, response.text))
 
-    print("Response code: {}".format(response.status_code))
+    # print("Response code: {}".format(response.status_code))
     UserMetricsJSON = response.json()
+
+    UserMetricsJSON['data'][0]['created_at'] = time.mktime(datetime.datetime(int(str(UserMetricsJSON['data'][0]['created_at'])[0:4]), int(str(UserMetricsJSON['data'][0]['created_at'])[5:7]), int(str(UserMetricsJSON['data'][0]['created_at'])[8:10]), int(str(UserMetricsJSON['data'][0]['created_at'])[11:13]), int(str(UserMetricsJSON['data'][0]['created_at'])[14:16])).timetuple())
     # json_response = response.json()
     # print(json.dumps(json_response, indent=4, sort_keys=True))
 
