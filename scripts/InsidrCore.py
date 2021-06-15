@@ -2,9 +2,10 @@ import os
 import requests
 import json
 import tweepy
+import time
+import datetime
+
 import TwitterAPI
-from datetime import timezone
-from time import time
 
 APISession = TwitterAPI.DeveloperKeyConfigurations()
 PARENT_TWEET_DETAILS = '{}'
@@ -18,14 +19,14 @@ def InsidrAlgorithm(scrappedTweetMetrics, scrappedUserMetrics):
     global PARENT_TWEET_DETAILS
     global PARENT_USER_DETAILS  
 
-#     print(json.dumps(scrappedTweetMetrics, indent=4, sort_keys=True))
-#     print(json.dumps(scrappedUserMetrics, indent=4, sort_keys=True))
+    # print(json.dumps(scrappedTweetMetrics, indent=4, sort_keys=True))
+    # print(json.dumps(scrappedUserMetrics, indent=4, sort_keys=True))
 
 
 def Collectibles(retweetersID):
     global RETWEETERS_DETAILS
 
-    TweetMetricValue, UserMetricValue = { RETWEETERS_DETAILS[itr]['id']: tweetMetricComponent(RETWEETERS_DETAILS[itr],retweetersID[itr][0]) for itr in range(len(RETWEETERS_DETAILS)) }, { RETWEETERS_DETAILS[itr]['user']['id']: userMetricComponent(RETWEETERS_DETAILS[itr],retweetersID[itr][1]) for itr in range(len(RETWEETERS_DETAILS)) }
+    TweetMetricValue, UserMetricValue = { RETWEETERS_DETAILS[itr]['id']: tweetMetricComponent(retweetersID[itr][0]) for itr in range(len(RETWEETERS_DETAILS)) }, { RETWEETERS_DETAILS[itr]['user']['id']: userMetricComponent(RETWEETERS_DETAILS[itr],retweetersID[itr][1]) for itr in range(len(RETWEETERS_DETAILS)) }
     # UserMetricValue = { retweeter['user']['id']: [{"created_at": retweeter['user']['created_at']}, {"screen_name": retweeter['user']['screen_name']}, {"favourites_count": retweeter['user']['favourites_count']}, {"followers_count": retweeter['user']['followers_count']}, {"location": retweeter['user']['location']}, {"statuses_count": retweeter['user']['statuses_count']}] for retweeter in RETWEETERS_DETAILS }
     # print(TweetMetricValue, UserMetricValue)
 
@@ -45,11 +46,11 @@ def userMetricComponent(userID_Details, userID):
     
     return scrappedValues
 
-def tweetMetricComponent(tweetID_Details, tweetID):
+def tweetMetricComponent(tweetID):
     global RETWEETERS_DETAILS
 
-    # unscrappedInfo = TwitterAPI.tweetMetrics(tweetID)
-    scrappedValues = [{"author_id": tweetID_Details['user']['id'], "created_at": tweetID_Details['created_at'], "source": tweetID_Details['source']}]
+    unscrappedInfo = TwitterAPI.retweetCallback(tweetID)
+    scrappedValues = [{"author_id": unscrappedInfo['data'][0]['author_id'], "created_at": unscrappedInfo['data'][0]['created_at'], "source": unscrappedInfo['data'][0]['source']}]
 
     return scrappedValues
 
@@ -113,4 +114,4 @@ def createInstance(PARENT_TWEET_ID):
     # print(json.dumps(PARENT_USER_DETAILS, indent=4, sort_keys=True))
     # print(json.dumps(PARENT_TWEET_DETAILS, indent=4, sort_keys=True))
 
-createInstance(1404116774266626056)
+createInstance(1404663795616677889)
