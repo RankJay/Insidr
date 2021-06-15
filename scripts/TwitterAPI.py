@@ -102,6 +102,64 @@ def tweetMetrics(tweetID):
 
     return TweetMetricsJSON
 
+def retweetCallback(tweetID):
+    RetweetMetricsJSON = '{}'
+    # You can adjust ids to include a single Tweets
+    # Or you can add to up to 100 comma-separated IDs
+    params = {"ids": tweetID, "tweet.fields": "id,author_id,created_at,text,attachments,lang,source,withheld,conversation_id,context_annotations,entities,geo,possibly_sensitive,public_metrics", "expansions": "attachments.media_keys", "media.fields": "duration_ms,public_metrics"} # Add tweet.fields for non_public_metrics, organic_metrics, promoted_metrics
+    # Tweet fields are adjustable.
+    # Options include:
+    # attachments, author_id, context_annotations,
+    # conversation_id, created_at, entities, geo, id,
+    # in_reply_to_user_id, lang, non_public_metrics, organic_metrics,
+    # possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets,
+    # source, text, and withheld
+
+    # Make the request
+    oauth = OAuthentication_v1A()
+    response = oauth.get("https://api.twitter.com/2/tweets", params=params)
+
+    if response.status_code != 200:
+        raise Exception("Request returned an error: {} {}".format(response.status_code, response.text))
+
+    # print("Response code: {}".format(response.status_code))
+    RetweetMetricsJSON = response.json()
+    
+    RetweetMetricsJSON['data'][0]['created_at'] = time.mktime(datetime.datetime(int(str(RetweetMetricsJSON['data'][0]['created_at'])[0:4]), int(str(RetweetMetricsJSON['data'][0]['created_at'])[5:7]), int(str(RetweetMetricsJSON['data'][0]['created_at'])[8:10]), int(str(RetweetMetricsJSON['data'][0]['created_at'])[11:13]), int(str(RetweetMetricsJSON['data'][0]['created_at'])[14:16])).timetuple())
+    # json_response = response.json()
+    # print(json.dumps(json_response, indent=4, sort_keys=True))
+
+    return RetweetMetricsJSON
+
+def conversationCallback(convID):
+    global keyAccessSession
+    conversationMetricsJSON = '{}'
+    # You can adjust ids to include a single Tweets
+    # Or you can add to up to 100 comma-separated IDs
+    params = {"tweet.fields": "author_id,conversation_id,created_at,in_reply_to_user_id,referenced_tweets,public_metrics", "expansions": "author_id,in_reply_to_user_id,referenced_tweets.id", "user.fields": "name,username"} # Add tweet.fields for non_public_metrics, organic_metrics, promoted_metrics
+    # Tweet fields are adjustable.
+    # Options include:
+    # attachments, author_id, context_annotations,
+    # conversation_id, created_at, entities, geo, id,
+    # in_reply_to_user_id, lang, non_public_metrics, organic_metrics,
+    # possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets,
+    # source, text, and withheld
+
+    # Make the request
+    headers = {"Authorization": "Bearer {}".format(keyAccessSession.bearer_token)}
+    conversation_url = "https://api.twitter.com/2/tweets/search/recent?query=conversation_id:{}".format(convID)
+    response = requests.request("GET", conversation_url, params=params, headers=headers)
+
+    if response.status_code != 200:
+        raise Exception("Request returned an error: {} {}".format(response.status_code, response.text))
+
+    # print("Response code: {}".format(response.status_code))
+    conversationMetricsJSON = response.json()
+    
+    conversationMetricsJSON['data'][0]['created_at'] = time.mktime(datetime.datetime(int(str(conversationMetricsJSON['data'][0]['created_at'])[0:4]), int(str(conversationMetricsJSON['data'][0]['created_at'])[5:7]), int(str(conversationMetricsJSON['data'][0]['created_at'])[8:10]), int(str(conversationMetricsJSON['data'][0]['created_at'])[11:13]), int(str(conversationMetricsJSON['data'][0]['created_at'])[14:16])).timetuple())
+    print(json.dumps(conversationMetricsJSON, indent=4, sort_keys=True))
+
+
 # NEED TWEET.ID OF USER
 def userMetrics(userID):
     global UserMetricsJSON
@@ -155,7 +213,7 @@ def userFollows(userID):
     if response.status_code != 200:
         raise Exception("Request returned an error: {} {}".format(response.status_code, response.text))
 
-    print("Response code: {}".format(response.status_code))
+    # print("Response code: {}".format(response.status_code))
     UserFollowsJSON = response.json()
     # json_response = response.json()
     # print(json.dumps(json_response, indent=4, sort_keys=True))
@@ -183,7 +241,7 @@ def userFollowing(userID):
     if response.status_code != 200:
         raise Exception("Request returned an error: {} {}".format(response.status_code, response.text))
 
-    print("Response code: {}".format(response.status_code))
+    # print("Response code: {}".format(response.status_code))
     UserFollowingJSON = response.json()
     # json_response = response.json()
     # print(json.dumps(json_response, indent=4, sort_keys=True))
@@ -196,6 +254,7 @@ def userFollowing(userID):
 # tweetMetrics('1398540647003422726')
 # print(json.dumps(TweetMetricsJSON, indent=4, sort_keys=True))
 # print(TweetMetricsJSON['data'][0]['source'])
+# conversationCallback(1404663795616677889)
 # userMetrics(1234812920791388160)
 # print(json.dumps(UserMetricsJSON, indent=4, sort_keys=True))
 # userFollows('2244994945')
