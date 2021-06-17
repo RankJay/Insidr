@@ -68,7 +68,7 @@ class ERC721AssetInfoClient:
         if "ipfs://" in response['image']['url']['ORIGINAL']:
             response['image']['url']['ORIGINAL'].replace("ipfs://", "https://ipfs.io/")
 
-        print(json.dumps(response, indent=4, sort_keys=True))
+        return response
 
 
 # NFTClient = ERC721AssetInfoClient(1000)
