@@ -157,7 +157,9 @@ def conversationCallback(convID):
     conversationMetricsJSON = response.json()
     
     conversationMetricsJSON['data'][0]['created_at'] = time.mktime(datetime.datetime(int(str(conversationMetricsJSON['data'][0]['created_at'])[0:4]), int(str(conversationMetricsJSON['data'][0]['created_at'])[5:7]), int(str(conversationMetricsJSON['data'][0]['created_at'])[8:10]), int(str(conversationMetricsJSON['data'][0]['created_at'])[11:13]), int(str(conversationMetricsJSON['data'][0]['created_at'])[14:16])).timetuple())
-    print(json.dumps(conversationMetricsJSON, indent=4, sort_keys=True))
+    # print(json.dumps(conversationMetricsJSON, indent=4, sort_keys=True))
+    
+    return conversationMetricsJSON
 
 
 # NEED TWEET.ID OF USER
